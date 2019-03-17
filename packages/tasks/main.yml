@@ -1,0 +1,41 @@
+---
+- name: Install packages
+  package:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - autoconf
+      - automake
+      - cmake
+      - ctags
+      - curl
+      - gawk
+      - gdb
+      - git
+      - htop
+      - llvm
+      - mc
+      - mosh
+      - python3
+      - tmux
+      - wget
+      - zsh
+      - opencv
+
+- name: Install Mac packages
+  package:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - git-lfs
+  when: ansible_distribution == 'MacOSX'
+
+- name: Install cask packages homebrew
+  homebrew_cask:
+      name: "{{ item  }}"
+  with_items:
+      - iterm2
+      - macvim
+      - netron
+      - rawtherapee
+  when: ansible_distribution == 'MacOSX'
