@@ -1,0 +1,13 @@
+---
+- stat: path=~/projects/dotfiles
+  register: dot_dir
+
+- name: Download dotfiles
+  git:
+      repo: 'https://github.com/ilyachur/dotfiles'
+      dest: ~/projects/dotfiles
+  when: dot_dir.stat.exists == False
+
+- name: Install dotfiles
+  shell: ~/projects/dotfiles/install.sh
+  when: dot_dir.stat.exists == False
