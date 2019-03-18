@@ -31,3 +31,7 @@
 - name: Show hidden files in Mac Finder
   shell: if [ `defaults read com.apple.Finder AppleShowAllFiles` == "true"  ]; then echo "Already enabled"; else defaults write com.apple.Finder AppleShowAllFiles true && killall Finder; fi
   when: ansible_distribution == 'MacOSX' 
+
+- name: Init vim packages
+  shell: yes | vim +PlugInstall +qall
+  when: dot_dir.stat.exists == False
