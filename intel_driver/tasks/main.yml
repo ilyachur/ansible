@@ -1,0 +1,19 @@
+---
+
+- name: Download driver release
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+  shell: wget https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-gmmlib_18.4.1_amd64.deb -P /tmp/neo && \
+         wget https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-igc-core_19.07.1542_amd64.deb -P /tmp/neo && \
+         wget https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-igc-opencl_19.07.1542_amd64.deb -P /tmp/neo && \
+         wget https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-opencl_19.10.12542_amd64.deb -P /tmp/neo && \
+         wget https://github.com/intel/compute-runtime/releases/download/19.10.12542/intel-ocloc_19.10.12542_amd64.deb -P /tmp/neo
+
+- name: Install driver
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+  shell: cd /tmp/neo && dpkg -i *.deb
+  become: yes
+  become_user: root
+
+- name: Remove installers
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+  shell: rm -rf /tmp/neo

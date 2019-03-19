@@ -26,12 +26,12 @@
 
 - name: Link MacVim to local bin
   shell: ln -s /Applications/MacVim.app/Contents/bin/vim /usr/local/bin/vim
-  when: local_vim.stat.exists == False
+  when: ansible_distribution == 'MacOSX' and local_vim.stat.exists == False
 
 - name: Show hidden files in Mac Finder
   shell: if [ `defaults read com.apple.Finder AppleShowAllFiles` == "true"  ]; then echo "Already enabled"; else defaults write com.apple.Finder AppleShowAllFiles true && killall Finder; fi
   when: ansible_distribution == 'MacOSX' 
 
 - name: Init vim packages
-  shell: yes | vim +PlugInstall +qall
+  shell: yes "" | vim +PlugInstall +qall
   when: dot_dir.stat.exists == False

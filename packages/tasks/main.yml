@@ -1,4 +1,20 @@
 ---
+- name: Add packages keys
+  apt_key: url={{ item }} state=present
+  with_items:
+    - https://dl-ssl.google.com/linux/linux_signing_key.pub
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+
+# - name: Add packages repositories
+#   apt_repository: repo={{ item }} state=present update_cache=yes
+#   with_items:
+#       - ppa:git-core/ppa                        # git lfs
+#   when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+
+- name: Add git lfs to apt-get install
+  shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+
 - name: Install packages
   package:
       name: "{{ item }}"
@@ -20,7 +36,6 @@
       - tmux
       - wget
       - zsh
-      - opencv
 
 - name: Install Mac packages
   package:
@@ -28,6 +43,7 @@
       state: present
   with_items:
       - git-lfs
+      - opencv
   when: ansible_distribution == 'MacOSX'
 
 - name: Install cask packages homebrew
@@ -39,3 +55,30 @@
       - netron
       - rawtherapee
   when: ansible_distribution == 'MacOSX'
+
+- name: Install Ubuntu packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gimp
+    - git-lfs
+    - pkg-config
+    - python-pip
+    - python-tk
+    - python3-tk
+    - rxvt-unicode-256color
+    - ssh
+    - ocl-icd-opencl-dev
+    - ocl-icd-dev
+    - ocl-icd-libopencl1
+    - clinfo
+    - vim
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+
+- name: Upgrade pip
+  pip: name=pip extra_args=--upgrade
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+
+- name: Install git lfs
+  shell: git lfs install

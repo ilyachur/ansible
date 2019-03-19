@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+
+  roles:
+      - role: packages
+        become: yes
+        become_user: root
+      - role: configs
+      - role: intel_driver
