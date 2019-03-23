@@ -7,3 +7,4 @@
         become_user: root
       - role: configs
       - role: intel_driver
+      - role: radare2

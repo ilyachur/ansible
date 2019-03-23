@@ -1,0 +1,22 @@
+---
+- name: Check if radare2 is installed
+  command: which radare2
+  ignore_errors: yes
+  register: radare2_check
+
+- name: Download radare2 sources
+  git:
+      repo: 'https://github.com/radare/radare2'
+      dest: /tmp/radare2
+  when: radare2_check.rc != 0
+
+- name: Install radare2
+  shell: cd /tmp/radare2/ && ./sys/install.sh && make unstall
+  when: radare2_check.rc != 0
+  ignore_errors: yes
+  become: yes
+  become_user: root
+
+- name: Remove temp files
+  shell: rm -rf /tmp/radare2
+  when: radare2_check.rc != 0

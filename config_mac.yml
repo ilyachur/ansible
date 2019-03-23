@@ -9,3 +9,4 @@
       - role: packages
       - role: configs
       - role: ranger
+      - role: radare2

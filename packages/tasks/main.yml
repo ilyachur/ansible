@@ -5,11 +5,12 @@
     - https://dl-ssl.google.com/linux/linux_signing_key.pub
   when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
 
-# - name: Add packages repositories
-#   apt_repository: repo={{ item }} state=present update_cache=yes
-#   with_items:
-#       - ppa:git-core/ppa                        # git lfs
-#   when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+- name: Add packages repositories
+  apt_repository: repo={{ item }} state=present update_cache=yes
+  with_items:
+      - ppa:git-core/ppa                        # git lfs
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+  ignore_errors: yes
 
 - name: Add git lfs to apt-get install
   shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
