@@ -38,6 +38,7 @@
       - tmux
       - wget
       - zsh
+      - vifm
 
 - name: Install Mac packages
   package:
@@ -53,6 +54,7 @@
       name: "{{ item  }}"
   with_items:
       - iterm2
+      - mactex
       - macvim
       - netron
       - rawtherapee
