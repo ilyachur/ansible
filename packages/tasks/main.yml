@@ -16,6 +16,18 @@
   shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
   when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
 
+- name: Install cask packages homebrew
+  homebrew_cask:
+      name: "{{ item  }}"
+  with_items:
+      - iterm2
+      - mactex
+      - osxfuse
+      - macvim
+      - netron
+      - rawtherapee
+  when: ansible_distribution == 'MacOSX'
+
 - name: Install packages
   package:
       name: "{{ item }}"
@@ -37,6 +49,9 @@
       - python3
       - tmux
       - wget
+      - node
+      - sshfs
+      - curlftpfs
       - zsh
       - vifm
 
@@ -47,17 +62,6 @@
   with_items:
       - git-lfs
       - opencv
-  when: ansible_distribution == 'MacOSX'
-
-- name: Install cask packages homebrew
-  homebrew_cask:
-      name: "{{ item  }}"
-  with_items:
-      - iterm2
-      - mactex
-      - macvim
-      - netron
-      - rawtherapee
   when: ansible_distribution == 'MacOSX'
 
 - name: Install Ubuntu packages
