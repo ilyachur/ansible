@@ -1,0 +1,8 @@
+- name: Install term-img
+  npm:
+    name: term-img
+    global: yes
+- name: Install term-img-cli
+  npm:
+    name: term-img-cli
+    global: yes

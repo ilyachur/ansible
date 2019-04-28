@@ -38,22 +38,23 @@
       - cmake
       - ctags
       - curl
+      - curlftpfs
       - gawk
       - gdb
       - git
       - htop
+      - imagemagick
       - llvm
       - mc
       - mosh
       - neovim
-      - python3
-      - tmux
-      - wget
       - node
+      - python3
       - sshfs
-      - curlftpfs
-      - zsh
+      - tmux
       - vifm
+      - wget
+      - zsh
 
 - name: Install Mac packages
   package:
