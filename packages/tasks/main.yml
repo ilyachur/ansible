@@ -48,7 +48,6 @@
       - mc
       - mosh
       - neovim
-      - node
       - python3
       - sshfs
       - tmux
@@ -62,6 +61,7 @@
       state: present
   with_items:
       - git-lfs
+      - node
       - opencv
   when: ansible_distribution == 'MacOSX'
 
@@ -70,19 +70,25 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - gimp
-    - git-lfs
-    - pkg-config
-    - python-pip
-    - python-tk
-    - python3-tk
-    - rxvt-unicode-256color
-    - ssh
-    - ocl-icd-opencl-dev
-    - ocl-icd-dev
-    - ocl-icd-libopencl1
-    - clinfo
-    - vim
+      - clang-6.0
+      - clang-tools-6.0
+      - gimp
+      - git-lfs
+      - pkg-config
+      - python-pip
+      - python-tk
+      - python3-tk
+      - rxvt-unicode-256color
+      - ssh
+      - ocl-icd-opencl-dev
+      - ocl-icd-dev
+      - ocl-icd-libopencl1
+      - clinfo
+      - vim
+  when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+
+- name: Link clangd
+  shell: update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-6.0 100
   when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
 
 - name: Upgrade pip
