@@ -39,6 +39,8 @@
       - ctags
       - curl
       - curlftpfs
+      - docx2txt
+      - exiv2
       - gawk
       - gdb
       - git
@@ -47,10 +49,13 @@
       - llvm
       - mc
       - mosh
+      - mp3info
+      - ncdu
       - neovim
       - python3
       - sshfs
       - tmux
+      - unrar
       - vifm
       - wget
       - zsh
