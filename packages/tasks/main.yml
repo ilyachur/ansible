@@ -9,6 +9,7 @@
   apt_repository: repo={{ item }} state=present update_cache=yes
   with_items:
       - ppa:git-core/ppa                        # git lfs
+      - ppa:jonathonf/vim                       # vim 8.1
   when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
   ignore_errors: yes
 
@@ -52,7 +53,6 @@
       - mosh
       - mp3info
       - ncdu
-      - neovim
       - python3
       - sshfs
       - tmux
@@ -68,6 +68,7 @@
   with_items:
       - git-lfs
       - node
+      - neovim
       - opencv
   when: ansible_distribution == 'MacOSX'
 
@@ -86,6 +87,7 @@
       - python3-tk
       - rxvt-unicode-256color
       - ssh
+      - npm
       - ocl-icd-opencl-dev
       - ocl-icd-dev
       - ocl-icd-libopencl1
@@ -100,6 +102,9 @@
 - name: Upgrade pip
   pip: name=pip extra_args=--upgrade
   when: ansible_os_family == 'Ubuntu' or ansible_os_family == 'Debian'
+
+- name: Install yarn
+  shell: curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
 - name: Install git lfs
   shell: git lfs install

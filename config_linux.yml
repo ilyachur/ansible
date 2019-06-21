@@ -6,5 +6,8 @@
         become: yes
         become_user: root
       - role: configs
-      - role: intel_driver
+      - role: npm
+        become: yes
+        become_user: root
+      # - role: intel_driver
       - role: radare2
