@@ -38,6 +38,7 @@
   with_items:
       - autoconf
       - automake
+      - clang-format
       - cmake
       - ctags
       - curl
@@ -54,6 +55,7 @@
       - mosh
       - mp3info
       - ncdu
+      - pass
       - python3
       - sshfs
       - tmux
