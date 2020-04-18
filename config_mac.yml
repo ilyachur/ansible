@@ -9,4 +9,5 @@
       - role: packages
       - role: configs
       - role: npm
+      - role: ctags-build
       - role: radare2

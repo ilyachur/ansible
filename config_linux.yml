@@ -10,4 +10,5 @@
         become: yes
         become_user: root
       # - role: intel_driver
+      - role: ctags-build
       - role: radare2

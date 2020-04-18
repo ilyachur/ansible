@@ -40,7 +40,7 @@
       - automake
       - clang-format
       - cmake
-      - ctags
+      # - ctags  # Added a step to build universal tags
       - curl
       - curlftpfs
       - docx2txt
@@ -71,7 +71,6 @@
   with_items:
       - git-lfs
       - node
-      - neovim
       - opencv
   when: ansible_distribution == 'MacOSX'
 
