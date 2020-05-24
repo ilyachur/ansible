@@ -55,8 +55,6 @@
       - mosh
       - mp3info
       - ncdu
-      - pass
-      - pass-otp
       - python3
       - sshfs
       - tmux

@@ -1,0 +1,16 @@
+---
+- name: Set taps homebrew
+  homebrew_tap:
+      name: "{{ item  }}"
+  with_items:
+      - amar1729/formulae
+  when: ansible_distribution == 'MacOSX'
+
+- name: Install packages
+  package:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - pass
+      - pass-otp
+      - browserpass
