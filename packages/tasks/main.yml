@@ -21,9 +21,10 @@
   homebrew_cask:
       name: "{{ item  }}"
   with_items:
+      - alacritty
       - digikam
       - iterm2
-      - mactex
+      # - mactex
       - osxfuse
       - macvim
       - netron
@@ -50,7 +51,6 @@
       - git
       - htop
       - imagemagick
-      - llvm
       - mc
       - mosh
       - mp3info
@@ -78,9 +78,11 @@
     name: "{{ item }}"
     state: present
   with_items:
+      - alacritty
       - clang-6.0
       - clang-tools-6.0
       - gimp
+      - llvm
       - git-lfs
       - pkg-config
       - python-pip
