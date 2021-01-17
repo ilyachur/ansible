@@ -25,6 +25,7 @@
       - digikam
       - iterm2
       # - mactex
+      - mounty    # Mount ntfs
       - osxfuse
       - macvim
       - netron
