@@ -24,6 +24,7 @@
       - alacritty
       - digikam
       - iterm2
+      - gpg-suite-no-mail
       # - mactex
       - mounty    # Mount ntfs
       - osxfuse
