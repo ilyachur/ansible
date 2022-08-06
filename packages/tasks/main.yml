@@ -23,11 +23,11 @@
   with_items:
       - alacritty
       - digikam
-      - iterm2
-      - gpg-suite-no-mail
+      # - iterm2
+      # - gpg-suite-no-mail
       # - mactex
       - mounty    # Mount ntfs
-      - osxfuse
+      # - osxfuse
       - macvim
       - netron
       - rawtherapee
@@ -43,24 +43,23 @@
       - automake
       - clang-format
       - cmake
+      - ccache
       # - ctags  # Added a step to build universal tags
       - curl
-      - curlftpfs
+      # - curlftpfs
       - docx2txt
       - exiv2
       - gawk
-      - gdb
       - git
       - htop
       - imagemagick
       - mc
-      - mosh
+      # - mosh
       - mp3info
       - ncdu
       - python3
-      - sshfs
+      # - sshfs
       - tmux
-      - unrar
       - vifm
       - wget
       - zsh
@@ -72,7 +71,7 @@
   with_items:
       - git-lfs
       - node
-      - opencv
+      # - opencv
   when: ansible_distribution == 'MacOSX'
 
 - name: Install Ubuntu packages
@@ -85,6 +84,7 @@
       - clang-tools-6.0
       - gimp
       - llvm
+      - gdb
       - git-lfs
       - pkg-config
       - python-pip

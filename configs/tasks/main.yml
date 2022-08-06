@@ -54,10 +54,6 @@
 - name: Set vim as an editor for git
   shell: git config --global core.editor vim
 
-- name: Link MacVim to local bin
-  shell: ln -s /Applications/MacVim.app/Contents/bin/vim /usr/local/bin/vim
-  when: ansible_distribution == 'MacOSX' and local_vim.stat.exists == False
-
 - name: Check status of hidden files
   command: defaults read com.apple.Finder AppleShowAllFiles
   when: ansible_distribution == 'MacOSX' 
