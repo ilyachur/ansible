@@ -32,6 +32,7 @@
       - netron
       - rawtherapee
       - vlc
+      - qView
   when: ansible_distribution == 'MacOSX'
 
 - name: Install packages
